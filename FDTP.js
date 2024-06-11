@@ -3,15 +3,15 @@
 //  a. capitalize(str)
 function capitalize(text) {
     if(typeof(text) === "string"){
-      let result = text[0].toUpperCase();
-      result += text.slice(1);
-      console.log(result);
+        let result = text[0].toUpperCase();
+        result += text.slice(1);
+        console.log(result);
     }
     else{
-      console.log("Input not a string");
+        console.log("Input not a string");
     }
-  }
-  capitalize("capitalize")
+}
+capitalize("capitalize")
 
 //  b. reverse(str)
 function reverse(text) {
@@ -25,25 +25,25 @@ function reverse(text) {
             console.log(result);
         }
     else{
-      console.log("Invalid input");
+        console.log("Invalid input");
     }
 }
 reverse("hello");
 
-  //  c. isPalindrome
+//  c. isPalindrome
 function isPalindrome(text) {
     let result = "";
     let counter = text.length - 1;
     if(typeof(text) === "string") {
         for(let i=0; i<text.length; i++) {
-        result += text[counter];
-        counter--;
+            result += text[counter];
+            counter--;
         }
         if(result === text){
-        console.log("It is a palindrome");
+            console.log("It is a palindrome");
         }
         else{
-        console.log("It isn't a palindrome")
+            console.log("It isn't a palindrome")
         }
     }
     else{
@@ -70,42 +70,42 @@ function double(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
       result[i]= arr[i]*2;
     }
     console.log(result);
-  }
-  double();
+}
+double();
   
-  //  b. filterEven(arr)
-  function filterEven(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+//  b. filterEven(arr)
+function filterEven(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
     let result = [];
     for(let i=0; i<arr.length; i++){
-      if(arr[i]%2 === 0){
-        result[i] = arr[i];
-      }
+        if(arr[i]%2 === 0){
+            result[i] = arr[i];
+        }
     }
     console.log(result);
-  }
-  filterEven();
+ }
+filterEven();
   
-  //  c.sum(arr)
-  function sum(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+//  c.sum(arr)
+function sum(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
     let sum_result = 0;
     for(let i=0; i<arr.length; i++){
-      sum_result += arr[i];
+        sum_result += arr[i];
     }
     console.log(sum_result);
-  }
-  sum();
+}
+sum();
   
-  //  d. average(arr)
-  function average(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+//  d. average(arr)
+function average(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
     let avg = 0;
     let total= 0;
     for(let i=0; i<arr.length; i++){
-      total += arr[i];
+        total += arr[i];
     }
     avg = total/arr.length;
     console.log(avg);
-  }
-  average();
+}
+average();
 
 
 
@@ -119,25 +119,25 @@ function fullName(a, b) {
     }
     let fullname = person.firstName + " " + person.lastName;
     console.log(fullname);
-  }
-  fullName('Nana', 'Abruquah')
+}
+fullName('Nana', 'Abruquah')
   
-  //  b. isAdult(person)
-  function isAdult(age) {
+//  b. isAdult(person)
+function isAdult(age) {
     const person = {
-      age: age
+        age: age
     }
     if(person.age >= 18){
-      console.log("You are " + person.age + " years old.");
+        console.log("You are " + person.age + " years old.");
     }
     else if(person.age < 18){
-      console.log("You are below 18yrs old. You are " + person.age);
+        console.log("You are below 18yrs old. You are " + person.age);
     }
-  }
-  isAdult(7)
+}
+isAdult(7)
   
-  //  c. filterByAge(people, minAge)
-  function filterByAge(minAge){
+//  c. filterByAge(people, minAge)
+function filterByAge(minAge){
     const person = [
       { name: "Alice", age: 25 },
       { name: "Bob", age: 20 },
@@ -147,10 +147,10 @@ function fullName(a, b) {
     
     let filteredResult = [];
     for(let i=0; i<person.length; i++) {
-      if(person[i].age <= minAge){
-        filteredResult.push(person[i]);
-      }
+        if(person[i].age <= minAge){
+            filteredResult.push(person[i]);
+        }
     }
     console.log(filteredResult)
-  }
-  filterByAge(20)
+}
+filterByAge(20)
