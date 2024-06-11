@@ -29,3 +29,25 @@ function reverse(text) {
     }
   }
   reverse("hello");
+
+  //  c. isPalindrome
+function isPalindrome(text) {
+    let result = "";
+    let counter = text.length - 1;
+    if(typeof(text) === "string") {
+      for(let i=0; i<text.length; i++) {
+      result += text[counter];
+      counter--;
+      }
+      if(result === text){
+        console.log("It is a palindrome");
+      }
+      else{
+        console.log("It isn't a palindrome")
+      }
+    }
+    else{
+      console.log("Invalid input");
+    }
+  }
+  isPalindrome("ama");
