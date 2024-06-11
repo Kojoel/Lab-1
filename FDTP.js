@@ -106,3 +106,51 @@ function double(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
     console.log(avg);
   }
   average();
+
+
+
+/////////////////// Object Transformations
+
+//  a. fullName(person)
+function fullName(a, b) {
+    const person = {
+      firstName: a,
+      lastName: b
+    }
+    let fullname = person.firstName + " " + person.lastName;
+    console.log(fullname);
+  }
+  fullName('Nana', 'Abruquah')
+  
+  //  b. isAdult(person)
+  function isAdult(age) {
+    const person = {
+      age: age
+    }
+    if(person.age >= 18){
+      console.log("You are " + person.age + " years old.");
+    }
+    else if(person.age < 18){
+      console.log("You are below 18yrs old. You are " + person.age);
+    }
+  }
+  isAdult(7)
+  
+  //  c. filterByAge(people, minAge)
+  function filterByAge(minAge){
+    const person = [
+      { name: "Alice", age: 25 },
+      { name: "Bob", age: 20 },
+      { name: "Charlie", age: 30 },
+      { name: "Dave", age: 15 }
+    ];
+    
+    let filteredResult = [];
+    for(let i=0; i<person.length; i++) {
+      if(person[i].age <= minAge){
+        filteredResult.push(person[i]);
+      }
+    }
+    console.log(filteredResult)
+  }
+  filterByAge(20)
