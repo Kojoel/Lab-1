@@ -2,13 +2,13 @@
 
 //  a. capitalize(str)
 function capitalize(text) {
-    if(typeof(text) === "string"){
-        let result = text[0].toUpperCase();
-        result += text.slice(1);
-        console.log(result);
+    if(typeof(text) !== "string"){
+        console.log("Input not a string");
     }
     else{
-        console.log("Input not a string");
+        let result = text[0].toUpperCase();
+        result += text.slice(1);
+        console.log("Capitalize: ", result, "\n");
     }
 }
 capitalize("capitalize")
@@ -22,7 +22,7 @@ function reverse(text) {
             result += text[counter];
             counter--;
             }
-            console.log(result);
+            console.log("Reverse: ", result, "\n");
         }
     else{
         console.log("Invalid input");
@@ -40,22 +40,22 @@ function isPalindrome(text) {
             counter--;
         }
         if(result === text){
-            console.log("It is a palindrome");
+            console.log("It is a palindrome", "\n");
         }
         else{
-            console.log("It isn't a palindrome")
+            console.log("It isn't a palindrome", "\n")
         }
     }
     else{
         console.log("Invalid input");
     }
 }
-isPalindrome("ama");
+isPalindrome("hello");
 
 // d. wordCount
 function wordCount(text) {
     let result = text.split(" ").length;
-    console.log(result);
+    console.log("wordCount: ", result, "\n");
 }
 wordCount("this counts the number of words")
 
@@ -64,34 +64,35 @@ wordCount("this counts the number of words")
 /////////////////// Array Transformatioms
 
 //  a. double(arr)
-function double(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+let arr = [2, 3, 4, 5, 6, 7, 8, 10, 12];
+function double(){
     let result = [];
     for(let i=0; i<arr.length; i++){
       result[i]= arr[i]*2;
     }
-    console.log(result);
+    console.log("double: ", result, "\n");
 }
 double();
   
 //  b. filterEven(arr)
-function filterEven(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+function filterEven(){
     let result = [];
     for(let i=0; i<arr.length; i++){
         if(arr[i]%2 === 0){
-            result[i] = arr[i];
+            result.push(arr[i]);
         }
     }
-    console.log(result);
+    console.log("filterEven: ", result, "\n");
  }
 filterEven();
   
 //  c.sum(arr)
-function sum(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+function sum(){
     let sum_result = 0;
     for(let i=0; i<arr.length; i++){
         sum_result += arr[i];
     }
-    console.log(sum_result);
+    console.log("Sum: ", sum_result, "\n");
 }
 sum();
   
@@ -103,7 +104,7 @@ function average(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
         total += arr[i];
     }
     avg = total/arr.length;
-    console.log(avg);
+    console.log("Average: ", avg, "\n");
 }
 average();
 
@@ -118,7 +119,7 @@ function fullName(a, b) {
       lastName: b
     }
     let fullname = person.firstName + " " + person.lastName;
-    console.log(fullname);
+    console.log("FullName", fullname, "\n");
 }
 fullName('Nana', 'Abruquah')
   
@@ -128,10 +129,10 @@ function isAdult(age) {
         age: age
     }
     if(person.age >= 18){
-        console.log("You are " + person.age + " years old.");
+        console.log("You are " + person.age + " years old.", "\n");
     }
     else if(person.age < 18){
-        console.log("You are below 18yrs old. You are " + person.age);
+        console.log("You are below 18yrs old. You are " + person.age, "\n");
     }
 }
 isAdult(7)
@@ -151,6 +152,17 @@ function filterByAge(minAge){
             filteredResult.push(person[i]);
         }
     }
-    console.log(filteredResult)
+    console.log("Filtered by age: ", filteredResult, "\n")
 }
-filterByAge(20)
+filterByAge(20);
+
+
+///////////// Function Composition
+const compose = (func1, func2) => {
+    return function (arr) {
+        return func1(func2)
+    }
+}
+
+const composedFunction = compose(sum, filterEven);
+console.log(composedFunction());
