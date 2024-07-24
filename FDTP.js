@@ -2,16 +2,17 @@
 
 //  a. capitalize(str)
 function capitalize(text) {
+    let result;
     if(typeof(text) !== "string"){
         console.log("Input not a string");
     }
     else{
-        let result = text[0].toUpperCase();
+        result = text[0].toUpperCase();
         result += text.slice(1);
         console.log("Capitalize: ", result, "\n");
     }
+    return result;
 }
-capitalize("capitalize")
 
 //  b. reverse(str)
 function reverse(text) {
@@ -27,6 +28,7 @@ function reverse(text) {
     else{
         console.log("Invalid input");
     }
+    return result;
 }
 reverse("hello");
 
@@ -49,15 +51,22 @@ function isPalindrome(text) {
     else{
         console.log("Invalid input");
     }
+    return result;
 }
 isPalindrome("hello");
 
 // d. wordCount
 function wordCount(text) {
-    let result = text.split(" ").length;
-    console.log("wordCount: ", result, "\n");
+    let words = text.trim().split(/\s+/);
+    let result = words.length;
+    if(result === 1 && words[0] === "") {
+        return 0;
+    } else {
+        console.log("wordCount: ", result, "\n");
+        return result;
+    }
 }
-wordCount("this counts the number of words")
+wordCount("this is a test");
 
 
 
@@ -65,39 +74,44 @@ wordCount("this counts the number of words")
 
 //  a. double(arr)
 let arr = [2, 3, 4, 5, 6, 7, 8, 10, 12];
-function double(){
+function double(arr) {
     let result = [];
-    for(let i=0; i<arr.length; i++){
-      result[i]= arr[i]*2;
+    for(let i = 0; i < arr.length; i++) {
+        result[i] = arr[i] * 2;
     }
     console.log("double: ", result, "\n");
+    return result;
 }
-double();
+double(arr);
   
 //  b. filterEven(arr)
-function filterEven(){
+function filterEven(arr=[1,2,3,4,5,6,7,8]) {
     let result = [];
-    for(let i=0; i<arr.length; i++){
-        if(arr[i]%2 === 0){
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i] % 2 === 0) {
             result.push(arr[i]);
         }
     }
     console.log("filterEven: ", result, "\n");
- }
+    return result;
+}
 filterEven();
   
 //  c.sum(arr)
-function sum(){
+let arr2 = [1, 2, 3, 4];
+function sum(arr){
     let sum_result = 0;
     for(let i=0; i<arr.length; i++){
         sum_result += arr[i];
     }
     console.log("Sum: ", sum_result, "\n");
+    return sum_result;
 }
-sum();
+sum(arr2);
   
 //  d. average(arr)
-function average(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
+arr= [1,2,3,4,5]
+function average(arr){
     let avg = 0;
     let total= 0;
     for(let i=0; i<arr.length; i++){
@@ -105,8 +119,9 @@ function average(arr= [2, 3, 4, 5, 6, 7, 8, 10, 12]){
     }
     avg = total/arr.length;
     console.log("Average: ", avg, "\n");
+    return avg;
 }
-average();
+average(arr);
 
 
 
@@ -120,6 +135,7 @@ function fullName(a, b) {
     }
     let fullname = person.firstName + " " + person.lastName;
     console.log("FullName", fullname, "\n");
+    return fullname;
 }
 fullName('Nana', 'Abruquah')
   
@@ -130,9 +146,11 @@ function isAdult(age) {
     }
     if(person.age >= 18){
         console.log("You are " + person.age + " years old.", "\n");
+        return `You are ${person.age} years old.`;
     }
     else if(person.age < 18){
         console.log("You are below 18yrs old. You are " + person.age, "\n");
+        return `You are below 18yrs old. You are ${person.age}`;
     }
 }
 isAdult(7)
@@ -152,17 +170,41 @@ function filterByAge(minAge){
             filteredResult.push(person[i]);
         }
     }
-    console.log("Filtered by age: ", filteredResult, "\n")
+    console.log("Filtered by age: ", filteredResult, "\n");
+    return filteredResult;
 }
 filterByAge(20);
 
 
 ///////////// Function Composition
-const compose = (func1, func2) => {
-    return function (arr) {
-        return func1(func2)
-    }
-}
+// const compose = (func1, func2) => {
+//     return function (arr) {
+//         return func1(func2)
+//     }
+// }
+const compose = (sum, filterEven) => {
+    return function(arr) {
+        return func1(func2(arr));
+    };
+};
 
-const composedFunction = compose(sum, filterEven);
-console.log(composedFunction());
+// const composedFunction = compose(sum, filterEven);
+// console.log(composedFunction());
+// return composedFunction;
+
+
+module.exports = {
+    capitalize,
+    reverse,
+    isPalindrome,
+    wordCount,
+    double,
+    filterEven,
+    sum,
+    average,
+    fullName,
+    isAdult,
+    filterByAge,
+    compose,
+    // composedFunction,
+}
